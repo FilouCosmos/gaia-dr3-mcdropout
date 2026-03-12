@@ -46,8 +46,6 @@ Le modèle a été évalué sur un échantillon de test (20% des données).
 
 ## Reproductibilité (Installation Locale)
 
-## Reproductibilité (Installation Locale)
-
 Pour exécuter ce projet sur votre machine avec prise en charge du GPU :
 
 1. Clonez ce dépôt :
