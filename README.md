@@ -1,5 +1,4 @@
-
-<img width="700" height="371" alt="image" src="https://github.com/user-attachments/assets/fe550c00-5932-4a11-9717-02e9b0d11d18" />
+<img width="1003" height="527" alt="image" src="https://github.com/user-attachments/assets/d52b0ff3-c893-471b-91b6-621cc9580d80" />
 
 # Prédiction Galactique par Deep Learning (MC Dropout)
 
