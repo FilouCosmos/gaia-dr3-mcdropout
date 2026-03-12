@@ -46,7 +46,7 @@ Le modèle a été évalué sur un échantillon de test (20% des données).
 
 ## Reproductibilité (Installation Locale)
 
-P## Reproductibilité (Installation Locale)
+## Reproductibilité (Installation Locale)
 
 Pour exécuter ce projet sur votre machine avec prise en charge du GPU :
 
