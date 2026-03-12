@@ -46,9 +46,21 @@ Le modèle a été évalué sur un échantillon de test (20% des données).
 
 ## Reproductibilité (Installation Locale)
 
+P## Reproductibilité (Installation Locale)
+
 Pour exécuter ce projet sur votre machine avec prise en charge du GPU :
 
-1. **Clonez ce dépôt :**
-```bash
-git clone [https://github.com/VOTRE_PSEUDO/gaia-radial-velocity-mcdropout.git](https://github.com/VOTRE_PSEUDO/gaia-radial-velocity-mcdropout.git)
-cd gaia-radial-velocity-mcdropout
+1. Clonez ce dépôt :
+   ```bash
+   git clone [https://github.com/VOTRE_PSEUDO/gaia-dr3-mcdropout.git](https://github.com/VOTRE_PSEUDO/gaia-dr3-mcdropout.git)
+   cd gaia-dr3-mcdropout
+
+2. Créez un environnement virtuel et installez les dépendances :
+   ```bash
+   conda create -n gaia_ai python=3.10
+   conda activate gaia_ai
+   pip install torch pandas matplotlib seaborn astroquery umap-learn pyarrow fastparquet
+   
+3. Lancez le notebook :
+   ```bash
+   jupyter lab
