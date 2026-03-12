@@ -1,3 +1,5 @@
+<img width="700" height="371" alt="image" src="https://github.com/user-attachments/assets/fe550c00-5932-4a11-9717-02e9b0d11d18" />
+
 # Prédiction Galactique par Deep Learning (MC Dropout)
 
 Ce projet de Data Science / IA vise à prédire la **Vitesse Radiale** manquante de millions d'étoiles au sein de la Voie Lactée, en utilisant les données massives du catalogue **Gaia DR3** de l'Agence Spatiale Européenne (ESA). 
