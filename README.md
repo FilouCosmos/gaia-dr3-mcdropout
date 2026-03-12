@@ -23,6 +23,7 @@ Le modèle repose sur un réseau de neurones profond de type **Perceptron Multic
 ## Fonction de Perte et Optimisation
 
 L'entraînement du modèle minimise l'Erreur Quadratique Moyenne (MSE) :
+
 $$L = \text{MSE}(y, \hat{y}) = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
 
 * **Optimiseur :** Adam avec un Learning Rate de $0.005$.
