@@ -64,3 +64,9 @@ Pour exécuter ce projet sur votre machine avec prise en charge du GPU :
 3. Lancez le notebook :
    ```bash
    jupyter lab
+
+_______________________________________________________________________________________________________________________________
+
+Projet réalisé par Philippe COMBOT dans le cadre du cursus Ingénieur en Intelligence Artificielle (OpenClassrooms).
+
+✉️ Me contacter par emaiL : mail-pro@philippecombot.com
