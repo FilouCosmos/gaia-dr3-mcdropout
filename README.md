@@ -50,7 +50,7 @@ Pour exécuter ce projet sur votre machine avec prise en charge du GPU :
 
 1. Clonez ce dépôt :
    ```bash
-   git clone [https://github.com/VOTRE_PSEUDO/gaia-dr3-mcdropout.git](https://github.com/VOTRE_PSEUDO/gaia-dr3-mcdropout.git)
+   git clone https://github.com/FilouCosmos/gaia-dr3-mcdropout.git
    cd gaia-dr3-mcdropout
 
 2. Créez un environnement virtuel et installez les dépendances :
