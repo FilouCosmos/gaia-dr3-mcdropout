@@ -65,4 +65,3 @@ ________________________________________________________________________________
 
 Projet réalisé par Philippe COMBOT dans le cadre du cursus Ingénieur en Intelligence Artificielle (OpenClassrooms).
 
-✉️ Me contacter par emaiL : mail-pro@philippecombot.com
