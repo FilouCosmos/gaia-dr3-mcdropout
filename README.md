@@ -1,64 +1,28 @@
-<img width="1003" height="527" alt="image" src="https://github.com/user-attachments/assets/d52b0ff3-c893-471b-91b6-621cc9580d80" />
+#  Gaia RV Predictor (MC Dropout)
 
-# Prédiction Galactique par Deep Learning (MC Dropout)
+Ce projet utilise l'apprentissage profond pour prédire la **vitesse radiale** des étoiles à partir des données astrométriques de la mission **Gaia DR3**. Il intègre une gestion de l'incertitude via la technique du **Monte Carlo Dropout**.
 
-Ce projet de Data Science / IA vise à prédire la **Vitesse Radiale** manquante de millions d'étoiles au sein de la Voie Lactée, en utilisant les données massives du catalogue **Gaia DR3** de l'Agence Spatiale Européenne (ESA). 
+##  Architecture du Modèle
 
-Face à l'enjeu de fiabilité des données spatiales, l'approche retenue est une **Régression Profonde Probabiliste** basée sur le **Monte Carlo Dropout** développée avec **PyTorch**.
+Le modèle est un réseau de neurones dense (MLP) où le Dropout est maintenu actif lors de l'inférence pour générer une distribution de prédictions.
 
-## Enjeux et Valeur Métier
+```mermaid
+graph TD
+    A[Données Astrométriques: 8 features] --> B[Dense 64 + ReLU]
+    B --> C[Dropout 20%]
+    C --> D[Dense 128 + ReLU]
+    D --> E[Dropout 20%]
+    E --> F[Dense 64 + ReLU]
+    F --> G[Couche de Sortie: 1]
+    G --> H{Incertitude}
+    H -->|100 itérations| I[Moyenne & Écart-type]
+```
+# Fonctionnalités
+Collecte ADQL : Requête automatisée sur les serveurs de l'ESA (Gaia Archive).
 
-* **Complétion de données (Missing Value Imputation) :** Le spectromètre de Gaia n'a mesuré la vitesse radiale que pour environ 3% des étoiles les plus brillantes. L'IA permet ici d'estimer la vitesse d'éloignement ou de rapprochement (vitesse 3D) à partir des données 2D disponibles.
-* **Ingénierie des incertitudes :** Contrairement à une IA classique qui fournit une valeur fixe, ce modèle "sait quand il ne sait pas". Il fournit une marge d'erreur ($\sigma$) pour chaque prédiction, une donnée cruciale pour la recherche scientifique et la fiabilité des modèles.
-* **Feature Engineering Astrophysique :** Transformation des données brutes (parallaxe, magnitude apparente) en variables physiques réelles (distance en parsecs, magnitude absolue, mouvement propre total).
-* **Full-Stack ML & Infra :** Mise en place d'un pipeline complet allant du requêtage **ADQL** sur les serveurs de l'ESA à l'entraînement accéléré sur GPU (**CUDA**) dans un environnement Lab local.
+Feature Engineering : Calcul de la distance (parsec), magnitude absolue et vitesse tangentielle.
 
-## Architecture de l'Intelligence Artificielle
+Quantification d'Incertitude : Estimation de la fiabilité de chaque prédiction.
 
-Le modèle repose sur un réseau de neurones profond de type **Perceptron Multicouche (MLP)** conçu pour la régression complexe.
-* **Architecture :** 4 couches denses (64, 128, 64 neurones) utilisant la fonction d'activation ReLU.
-* **Monte Carlo Dropout :** Intégration de couches de Dropout ($p=0.2$) qui restent **actives lors de l'inférence**. 
-* **Inférence Probabiliste :** En effectuant $T=100$ passages pour chaque étoile, le modèle génère une distribution de probabilité permettant de calculer la moyenne (la prédiction finale) et l'écart-type (l'indice de confiance).
-
-## Fonction de Perte et Optimisation
-
-L'entraînement du modèle minimise l'Erreur Quadratique Moyenne (MSE).
-
-* **Optimiseur :** Adam avec un Learning Rate de $0.005$.
-* **Accélération Matérielle :** Entraînement sur carte graphique (CUDA/GPU) pour une gestion efficace des tenseurs sur 100 000 échantillons.
-
-## Résultats et Visualisation
-
-Le modèle a été évalué sur un échantillon de test (20% des données). 
-1.  **Compréhension Physique :** Les prédictions suivent fidèlement la réalité (vérité terrain), prouvant que l'IA a capturé les corrélations entre la couleur, la luminosité et la cinématique stellaire.
-2.  **Analyse de l'Incertitude :** Le graphique final met en évidence les barres d'erreur ($\sigma$) issues du MC Dropout. Une barre large indique que la physique de l'étoile est atypique pour le modèle, prévenant ainsi les erreurs d'interprétation.
-3.  **Régression vers la moyenne :** L'analyse montre que le modèle reste prudent sur les vitesses extrêmes (anomalies à hautes vitesses), un comportement de sécurité classique en apprentissage supervisé.
-
-## Stack Technique
-
-* **Langage :** Python 3
-* **Deep Learning :** PyTorch (MCDropoutNet, CUDA/GPU)
-* **Data Manipulation :** Pandas, Scikit-Learn (StandardScaler), Numpy
-* **Collecte de données :** Astroquery (API Gaia de l'ESA)
-* **Visualisation :** Matplotlib, Seaborn
-
-## Reproductibilité (Installation Locale)
-
-Pour exécuter ce projet sur votre machine avec prise en charge du GPU :
-
-1. Clonez ce dépôt :
-   ```bash
-   git clone https://github.com/FilouCosmos/gaia-dr3-mcdropout.git
-   cd gaia-dr3-mcdropout
-
-2. Créez un environnement virtuel et installez les dépendances :
-   ```bash
-   conda create -n gaia_ai python=3.10
-   conda activate gaia_ai
-   pip install torch pandas matplotlib seaborn astroquery umap-learn pyarrow fastparquet
-   
-3. Lancez le notebook :
-   ```bash
-   jupyter lab
-   ```
-
+# Visualisation
+Le script génère des graphiques comparant les valeurs réelles de Gaia avec les prédictions de l'IA, accompagnées de leurs barres d'erreur (incertitude épistémique).
