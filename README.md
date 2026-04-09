@@ -1,4 +1,4 @@
-#  Gaia RV Predictor (MC Dropout)
+# Gaia RV Predictor (MC Dropout)
 
 Ce projet utilise l'apprentissage profond pour prédire la **vitesse radiale** des étoiles à partir des données astrométriques de la mission **Gaia DR3**. Il intègre une gestion de l'incertitude via la technique du **Monte Carlo Dropout**.
 
